@@ -1,0 +1,45 @@
+# Core dependencies for the SAD (Birkhoff interpolation) optimizer in src/min_SAD.py
+numpy
+scipy
+ipdb
+
+# Trust-region subproblem solver used by src/min_quadratic.py, src/s2_TRSP_calculation.py,
+# src/get_poisedness_minq.py
+trustregion
+
+# Plotting (plot/, src/heatmap_poisedness.py)
+matplotlib
+
+# Sparse array support used by plot/plot_cutest_comparison.py
+sparse
+
+# --- Not pip-installable; see README.md "Installation" for build-from-source instructions ---
+#
+# minqsw (box-constrained QP solver, https://github.com/POptUS/MINQ) -- required by
+#   src/min_quadratic.py, src/s2_TRSP_calculation.py, src/get_poisedness_minq.py, src/min_SAD.py,
+#   and most of tests/. Clone and add minq/py/minq5 to PYTHONPATH.
+#
+# pycutest (CUTEst interface, https://github.com/ralna/pycutest) -- required by
+#   benchmark/run_test_functions.py, benchmark/make_pyCUTEst_problem_list.py,
+#   plot/plot_cutest_comparison.py. Requires a separate CUTEst/SIFDecode/ARCHDefs install; follow
+#   https://github.com/ralna/pycutest exactly.
+#
+# mpi4py -- required by benchmark/run_test_functions.py. Requires a working MPI installation (e.g.
+#   OpenMPI or MPICH) on the system.
+#
+# ibcdfo (POptUS, https://github.com/POptUS/IBCDFO) -- pounders solver, used only by
+#   stellarator_example/single_stage_optimization_SAD_reduced.py (DFO baseline comparison) and
+#   optionally src/Test_SAD_BenDFO.py.
+#
+# BenDFO (POptUS, https://github.com/POptUS/BenDFO) -- calfun/dfoxs test-problem evaluators,
+#   required only by src/Test_SAD_BenDFO.py. Clone and add BenDFO/py to PYTHONPATH.
+#   (benchmark/BenDFO/dfo.dat, BenDFO's own problem-list data file, is already included here.)
+#
+# simsopt (https://github.com/hiddenSymmetries/simsopt) -- VMEC-based stellarator optimization,
+#   required only for stellarator_example/. Itself requires a working VMEC build; see
+#   https://simsopt.readthedocs.io for installation.
+#
+# Py-BOBYQA is not a dependency of anything in this repository. The driver code that called the
+# modified "Hermite least-squares" fork used for the manuscript's baseline comparison is not
+# included here (it is not our code); see patches/README.md for what the fork's modification was
+# and why only the patch, not any calling code, is documented here.
